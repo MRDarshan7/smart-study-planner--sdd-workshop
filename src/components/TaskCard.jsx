@@ -1,4 +1,4 @@
-import { CalendarDays, Trash2 } from 'lucide-react';
+import { CalendarDays, Flame, Trash2 } from 'lucide-react';
 import { formatDeadline } from '../utils/date';
 
 const priorityStyles = {
@@ -14,6 +14,8 @@ const difficultyStyles = {
 };
 
 export function TaskCard({ task, onDeleteTask }) {
+  const importance = task.prioritization?.importance;
+
   return (
     <article className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-stone-300 hover:shadow-soft">
       <div className="flex items-start justify-between gap-4">
@@ -37,6 +39,14 @@ export function TaskCard({ task, onDeleteTask }) {
       </div>
 
       <div className="mt-5 flex flex-wrap gap-2">
+        {importance ? (
+          <span
+            className={`inline-flex items-center gap-1 rounded-full border px-3 py-1 text-xs font-bold ${importance.className}`}
+          >
+            <Flame size={13} aria-hidden="true" />
+            {importance.label}
+          </span>
+        ) : null}
         <span className={`rounded-full px-3 py-1 text-xs font-semibold ${priorityStyles[task.priority]}`}>
           {task.priority} priority
         </span>

@@ -1,5 +1,7 @@
 import { BookOpenCheck } from 'lucide-react';
 import { TaskCard } from './TaskCard';
+import { TodaysFocus } from './TodaysFocus';
+import { getPrioritizedTasks } from '../utils/prioritization';
 
 export function TaskList({ tasks, onDeleteTask }) {
   if (tasks.length === 0) {
@@ -18,11 +20,18 @@ export function TaskList({ tasks, onDeleteTask }) {
     );
   }
 
+  const prioritizedTasks = getPrioritizedTasks(tasks);
+  const focusTask = prioritizedTasks[0];
+
   return (
-    <section aria-label="Study tasks" className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-      {tasks.map((task) => (
-        <TaskCard key={task.id} task={task} onDeleteTask={onDeleteTask} />
-      ))}
+    <section aria-label="Study tasks" className="grid gap-4">
+      <TodaysFocus task={focusTask} />
+
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        {prioritizedTasks.map((task) => (
+          <TaskCard key={task.id} task={task} onDeleteTask={onDeleteTask} />
+        ))}
+      </div>
     </section>
   );
 }
