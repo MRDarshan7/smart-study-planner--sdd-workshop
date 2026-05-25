@@ -33,13 +33,16 @@ export function TaskForm({ onAddTask }) {
     setFormData(initialFormState);
   }
 
+  const fieldClass =
+    'h-11 rounded-lg border border-stone-200 bg-stone-50 px-3 text-stone-950 outline-none transition placeholder:text-stone-400 hover:border-stone-300 focus:border-emerald-500 focus:bg-white focus:ring-4 focus:ring-emerald-100';
+
   return (
     <form
       onSubmit={handleSubmit}
-      className="border border-stone-200 bg-white p-5 shadow-soft sm:p-6"
+      className="rounded-2xl border border-stone-200 bg-white p-5 shadow-soft sm:p-6"
     >
-      <div className="mb-5 flex items-center gap-3">
-        <span className="grid h-10 w-10 shrink-0 place-items-center bg-emerald-100 text-emerald-700">
+      <div className="mb-6 flex items-center gap-3">
+        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-emerald-100 text-emerald-700">
           <Sparkles size={20} aria-hidden="true" />
         </span>
         <div>
@@ -56,7 +59,7 @@ export function TaskForm({ onAddTask }) {
             value={formData.title}
             onChange={updateField}
             placeholder="e.g. Revise quadratic equations"
-            className="h-11 border border-stone-300 bg-stone-50 px-3 text-stone-950 outline-none transition focus:border-emerald-500 focus:bg-white"
+            className={fieldClass}
           />
         </label>
 
@@ -67,7 +70,7 @@ export function TaskForm({ onAddTask }) {
               name="subject"
               value={formData.subject}
               onChange={updateField}
-              className="h-11 border border-stone-300 bg-stone-50 px-3 text-stone-950 outline-none transition focus:border-emerald-500 focus:bg-white"
+              className={fieldClass}
             >
               {subjects.map((subject) => (
                 <option key={subject} value={subject}>
@@ -87,7 +90,7 @@ export function TaskForm({ onAddTask }) {
               name="deadline"
               value={formData.deadline}
               onChange={updateField}
-              className="h-11 border border-stone-300 bg-stone-50 px-3 text-stone-950 outline-none transition focus:border-emerald-500 focus:bg-white"
+              className={fieldClass}
             />
           </label>
         </div>
@@ -102,7 +105,7 @@ export function TaskForm({ onAddTask }) {
               name="difficulty"
               value={formData.difficulty}
               onChange={updateField}
-              className="h-11 border border-stone-300 bg-stone-50 px-3 text-stone-950 outline-none transition focus:border-emerald-500 focus:bg-white"
+              className={fieldClass}
             >
               {difficulties.map((difficulty) => (
                 <option key={difficulty} value={difficulty}>
@@ -121,7 +124,7 @@ export function TaskForm({ onAddTask }) {
               name="priority"
               value={formData.priority}
               onChange={updateField}
-              className="h-11 border border-stone-300 bg-stone-50 px-3 text-stone-950 outline-none transition focus:border-emerald-500 focus:bg-white"
+              className={fieldClass}
             >
               {priorities.map((priority) => (
                 <option key={priority} value={priority}>
@@ -134,7 +137,7 @@ export function TaskForm({ onAddTask }) {
 
         <button
           type="submit"
-          className="mt-2 inline-flex h-11 items-center justify-center gap-2 bg-emerald-700 px-4 font-semibold text-white transition hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+          className="mt-2 inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-emerald-700 px-4 font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-emerald-800 hover:shadow-md focus:outline-none focus:ring-4 focus:ring-emerald-100 active:translate-y-0"
         >
           <Plus size={18} aria-hidden="true" />
           Add task

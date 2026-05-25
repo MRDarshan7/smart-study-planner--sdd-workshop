@@ -4,9 +4,9 @@ import { TaskCard } from './TaskCard';
 export function TaskList({ tasks, onDeleteTask }) {
   if (tasks.length === 0) {
     return (
-      <section className="grid min-h-64 place-items-center border border-dashed border-stone-300 bg-white p-8 text-center">
+      <section className="grid min-h-64 place-items-center rounded-2xl border border-dashed border-stone-300 bg-white/80 p-8 text-center shadow-sm sm:min-h-[27rem]">
         <div>
-          <span className="mx-auto mb-4 grid h-12 w-12 place-items-center bg-teal-100 text-teal-700">
+          <span className="mx-auto mb-4 grid h-14 w-14 place-items-center rounded-2xl bg-teal-100 text-teal-700">
             <BookOpenCheck size={24} aria-hidden="true" />
           </span>
           <h2 className="text-xl font-semibold text-stone-950">No tasks yet</h2>
