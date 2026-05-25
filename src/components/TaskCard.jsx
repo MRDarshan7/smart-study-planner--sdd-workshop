@@ -13,6 +13,12 @@ const difficultyStyles = {
   Hard: 'border-indigo-200 text-indigo-800',
 };
 
+const importanceStyles = {
+  Critical: 'bg-rose-100 text-rose-800',
+  Important: 'bg-violet-100 text-violet-800',
+  Flexible: 'bg-teal-100 text-teal-800',
+};
+
 export function TaskCard({ task, onDeleteTask }) {
   return (
     <article className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-stone-300 hover:shadow-soft">
@@ -37,6 +43,11 @@ export function TaskCard({ task, onDeleteTask }) {
       </div>
 
       <div className="mt-5 flex flex-wrap gap-2">
+        <span
+          className={`rounded-full px-3 py-1 text-xs font-semibold ${importanceStyles[task.importance.label]}`}
+        >
+          {task.importance.label}
+        </span>
         <span className={`rounded-full px-3 py-1 text-xs font-semibold ${priorityStyles[task.priority]}`}>
           {task.priority} priority
         </span>
